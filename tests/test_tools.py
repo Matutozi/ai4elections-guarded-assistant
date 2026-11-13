@@ -32,6 +32,13 @@ def test_faq_in_each_language(tools):
     assert tools.call("faq.answer", {"question": "x", "language": "fr"})[1]
 
 
+def test_the_same_question_in_five_languages():
+    from guarded_assistant.scenarios import FAQ
+    tools = Tools(pack, Ledger(None))
+    for lang, question in FAQ.items():
+        assert ok(tools, "faq.answer", {"question": question, "language": lang}).startswith("[FAQ-001,"), lang
+
+
 def test_lookups(tools):
     assert json.loads(ok(tools, "units.lookup", {"pu_id": "SIM-00001"}))["state"] == "Benue"
     listed = json.loads(ok(tools, "units.lookup", {"state": "benue"}))
