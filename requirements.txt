@@ -4,3 +4,10 @@ scikit-learn>=1.3
 matplotlib>=3.7
 jupyter>=1.0
 nbformat>=5.9
+
+# The guarded assistant (src/guarded_assistant)
+starlette>=0.40
+uvicorn>=0.30
+httpx>=0.27
+pytest>=8
+consequence-verify @ git+https://github.com/Matutozi/Consequence-OS.git#subdirectory=python

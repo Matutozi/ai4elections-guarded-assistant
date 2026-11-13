@@ -3,3 +3,11 @@
 
 # #logos
 # Logos/
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Local run state: the gate's audit log, keys and the collation ledger
+.run/
