@@ -92,7 +92,7 @@ At most 20 approvals can wait per agent at once, so a manipulated agent can't bu
 | **D**: the gate is down on election day | Gate | It fails closed: nothing passes unchecked | Availability: agents stop until it's back; paper processes remain the fallback |
 | **E**: prompt injection makes the model act | Agent → gate | The role bounds what any call can do; consequential calls wait for a person | The model can still *say* something wrong to a voter in its reply; replies aren't checked, only actions |
 | **E**: a tool's definition changed to mislead the model | Tool server → gate | The gate pins tool definitions at first listing; a changed tool is hidden and asks until a person accepts it | — |
-| **E**: an argument the policy never saw | Gate, tool server | Arguments not in the pinned schema are refused by the gate; the tool server refuses them too, which covers calls made before any agent listed the tools | — |
+| **E**: an argument the policy never saw | Gate, tool server | Arguments not in the pinned schema are refused by the gate, which lists the tools itself if a call comes before any listing; the tool server refuses them too | Tested: refused, including from a client that never lists the tools |
 
 ## 7. Deployment and operations
 

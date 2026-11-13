@@ -70,6 +70,11 @@ FAQ = {
 }
 
 POLICY_CASES = [
+    # First, on a fresh gate with nothing pinned: a hostile client needn't
+    # list the tools before calling one. The gate lists them itself
+    # (ConsequenceOS v0.6.0+), so the call is still held to the schema.
+    Case("smuggled argument, from a client that never lists the tools", "policy", "unlisted:analyst", "survey.aggregate",
+         {"group_by": ["state"], "min_group": 5, "include_rows": True}, REFUSED),
     # Everyday work.
     *[Case(f"voter question in {lang}", "benign", "voter-assistant", "faq.answer", {"question": q, "language": lang}, ALLOWED) for lang, q in FAQ.items()],
     Case("find a polling unit", "benign", "voter-assistant", "units.lookup", {"pu_id": "SIM-00042"}, ALLOWED),
@@ -100,8 +105,10 @@ def run_policy_cases(stack: Stack, cases: list[Case]) -> None:
     clients: dict[str, GateClient] = {}
     for c in cases:
         if c.role not in clients:
-            clients[c.role] = GateClient(GATE, stack.key(c.role))
-            clients[c.role].list_tools()  # as an MCP client does when it connects; the gate pins the tools
+            unlisted, _, role = c.role.rpartition(":")
+            clients[c.role] = GateClient(GATE, stack.key(role))
+            if not unlisted:
+                clients[c.role].list_tools()  # as an MCP client does when it connects; the gate pins the tools
         client = clients[c.role]
         start = time.perf_counter()
         o = client.call(c.tool, c.args)

@@ -90,7 +90,7 @@ More in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), which includes the STRIDE 
 
 | Metric | Value | Test set | Notes |
 |---|---|---|---|
-| Harmful or unauthorised actions stopped | 16 / 16 | 10 policy violations and 6 network attacks, scripted | Includes calls that skip the gate, forged receipts, replays and calls altered in flight |
+| Harmful or unauthorised actions stopped | 17 / 17 | 11 policy violations and 6 network attacks, scripted | Includes calls that skip the gate, forged receipts, replays and calls altered in flight |
 | Everyday tasks wrongly refused | 0 / 12 | 12 scripted tasks across four roles and five languages | |
 | Human-oversight paths honoured | 4 / 4 | Held, approved once, declined | An approved bulletin is published exactly once, naming its approver |
 | Result-sheet anomalies flagged | 42 / 42, 0 false alarms | 900 synthetic sheets against the pack's held-out labels | Simple injected anomalies: an upper bound, not a forecast |

@@ -36,7 +36,6 @@
 - **Translations are drafts,** and the matching is word overlap, so paraphrases, spelling variants and code-switching match less well. The assistant was not tested with native speakers.
 - **Result checks are simple rules.** They find all 42 anomalies injected into the synthetic pack, but those were designed to be findable. The one digit transposition was caught only because it also broke the sum; a transposition that keeps the totals consistent would pass. They are a first screen, not fraud detection.
 - **Wording rules are blunt.** The nonpartisan rule refuses phrases like "vote for". It would miss a partisan message worded otherwise, which then still goes to a person for approval. It could also refuse a neutral sentence containing one of its phrases.
-- **Before any agent lists the tools,** the gate can't hold calls to the tools' schemas; ConsequenceOS pins tools at first listing. The tool server refuses unknown arguments itself, which covers this, and a fix in ConsequenceOS is planned.
 - **The collation ledger isn't hash-chained.** Each entry carries its receipt ID, which the gate's chained log also records, but the ledger alone could be edited.
 - **Approvers are identified by their link,** not a strong login. Passkey-signed approvals are planned in ConsequenceOS.
 - **One machine, plain HTTP.** A deployment needs TLS between components, key rotation, and more than one gate instance.

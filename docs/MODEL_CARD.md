@@ -39,12 +39,12 @@ Nothing was trained. The language model is used as published. The policy and the
 | Slice | n | Result | Notes |
 |---|---|---|---|
 | Everyday tasks, 4 roles, 5 languages | 12 | 12 allowed (0 false refusals) | Scripted |
-| Policy violations | 10 | 10 stopped | Roles, privacy, partisan content, declarations, a smuggled argument |
+| Policy violations | 11 | 11 stopped | Roles, privacy, partisan content, declarations, smuggled arguments (including from a client that never lists the tools) |
 | Human oversight paths | 4 | 4 as required | Held; approved and done exactly once; declined and never done |
 | Network attacks | 6 | 6 refused; ledger untouched | Gate skipped, forged receipt, replay, votes altered in flight, tool swapped in flight |
 | Result checks vs held-out labels | 900 sheets (42 anomalous) | Precision 1.0, recall 1.0 | Upper bound: the injected anomalies are simple |
 
-**Baseline (measured):** without the gate, 7 of the 10 policy violations are carried out by the tools on their own; their safeguards stop only 3. Without the receipt check, none of the 6 network attacks would be refused.
+**Baseline (measured):** without the gate, 7 of the 11 policy violations are carried out by the tools on their own; their safeguards stop only 4. Without the receipt check, none of the 6 network attacks would be refused.
 
 ## Error analysis
 

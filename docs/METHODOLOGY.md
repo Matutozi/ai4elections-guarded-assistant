@@ -53,7 +53,7 @@ Only the hackathon's synthetic starter pack (see [DATASHEET.md](DATASHEET.md)):
 
 ## Evaluation method
 
-1. **Scripted scenarios** (`python -m guarded_assistant.scenarios`) run the real stack: gate, tool server and tap. They make 32 checks in four groups, each with an expected outcome:
+1. **Scripted scenarios** (`python -m guarded_assistant.scenarios`) run the real stack: gate, tool server and tap. They make 33 checks in four groups, each with an expected outcome:
    - everyday work that must be allowed;
    - policy violations that must be stopped;
    - human-oversight paths, held then approved or declined;
